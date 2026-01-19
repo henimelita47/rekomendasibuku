@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Rekomendasi Buku</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    margin: 0;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+.box {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+button {
+    background: linear-gradient(135deg, #4f46e5, #2563eb);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+}
+
+/* ===== CARD BUKU ===== */
+.book {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    gap: 12px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.book:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.book-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.book-content {
+    min-width: 0;
+    width: 100%;
+}
+
+/* POTONG TEKS */
+.book-title,
+.book-meta {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: help;
+}
+
+.book-title {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.book-meta {
+    font-size: 12px;
+    color: #666;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="box">
+    <h2>📚 Sistem Rekomendasi Buku</h2>
+    <input id="query" placeholder="Cari judul / pengarang">
+
+    <select id="genre">
+        <option value="">Semua Genre</option>
+        <option>romance</option>
+        <option>motivasi</option>
+        <option>agama</option>
+        <option>sejarah</option>
+        <option>sastra</option>
+        <option>puisi</option>
+        <option>self-help</option>
+        <option>biografi</option>
+    </select>
+
+    <select id="mood">
+        <option value="">Semua Mood</option>
+        <option>senang</option>
+        <option>sedih</option>
+        <option>marah</option>
+        <option>tenang</option>
+        <option>penasaran</option>
+    </select>
+
+    <button id="btnRekomendasi">🔍 Dapatkan Rekomendasi</button>
+</div>
+
+<div class="box">
+    <h3>🔥 Buku Paling Dicari</h3>
+    <div class="grid" id="popular"></div>
+</div>
+
+<div class="box">
+    <h3>✅ Hasil Rekomendasi</h3>
+    <div class="grid" id="result"></div>
+</div>
+
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
